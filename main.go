@@ -96,7 +96,11 @@ var addCommand = &cobra.Command{
 	Short: "Adding data to tables",
 	Args:  cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
-		creation.AddingData(globalDatabase, args[1], args[2])
+		data := ""
+		for i := 2; i < len(args); i++ {
+			data += args[i]
+		}
+		creation.AddingData(globalDatabase, args[1], data)
 	},
 }
 
