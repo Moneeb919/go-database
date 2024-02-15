@@ -53,7 +53,7 @@ func CreatingTable(arg string, db string) {
 	fmt.Println("File created successfully!")
 }
 
-func stringToMap(data string) map[string]interface{} {
+func StringToMap(data string) map[string]interface{} {
 	var jsonData map[string]interface{}
 	err := json.Unmarshal([]byte(data), &jsonData)
 	if err != nil {
@@ -72,7 +72,7 @@ func AddingData(database, fileName, data string) {
 		fmt.Println("Wrong directory!")
 		return
 	}
-	jsonData := stringToMap(data)
+	jsonData := StringToMap(data)
 	if jsonData == nil {
 		return
 	}

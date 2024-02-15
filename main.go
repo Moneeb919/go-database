@@ -113,6 +113,20 @@ var displayCommand = &cobra.Command{
 	},
 }
 
+var findUserCommand = &cobra.Command{
+	Use:   "find <args>",
+	Short: "Finding data",
+	Args:  cobra.ExactArgs(2),
+	Run: func(cmd *cobra.Command, args []string) {
+		fileName := args[1]
+		data := ""
+		for i := 2; i < len(args); i++ {
+			data += args[i]
+		}
+		display.ShowTableParam(fileName, globalDatabase, data)
+	},
+}
+
 func useDatabase(dbName string) {
 	dir := filepath.Join(".", "databases")
 	dbPath := filepath.Join(dir, dbName)
@@ -142,6 +156,7 @@ func init() {
 	rootCmd.AddCommand(showCommand)
 	rootCmd.AddCommand(addCommand)
 	rootCmd.AddCommand(displayCommand)
+	rootCmd.AddCommand(findUserCommand)
 }
 
 func main() {
